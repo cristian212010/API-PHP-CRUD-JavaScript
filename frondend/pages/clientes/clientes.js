@@ -24,7 +24,9 @@ async function cargarClientes() {
         <td>${nombre_representante}</td>
         <td>${email_contacto}</td>
         <td>${telefono_contacto}</td>
-        <td><button id="${id_constructora}" class="btn btn-danger delete">eliminar</button></td>
+        <td>
+        <a class="btn btn-warning" href="editCliente.html?id=${id_constructora}">Editar</a>
+        <button id="${id_constructora}" class="btn btn-danger delete">eliminar</button></td>
     </tr>
     `;
   });
@@ -63,18 +65,18 @@ function validation(Objeto) {
   return !Object.values(Objeto).every((element) => element !== "");
 }
 
-const eliminar = document.querySelector('#datosClientes');
-eliminar.addEventListener('click', borrar)
+const eliminar = document.querySelector("#datosClientes");
+eliminar.addEventListener("click", borrar);
 
 function borrar(e) {
-    if (e.target.classList.contains('delete')) {
-        console.log(e.target);
-        const idCliente = e.target.getAttribute('id');
-        console.log(idCliente);
+  if (e.target.classList.contains("delete")) {
+    console.log(e.target);
+    const idCliente = e.target.getAttribute("id");
+    console.log(idCliente);
 
-        const confir = confirm("Desea eliminarlo?");
-        if (confir) {
-            deleteCliente(idCliente);
-        }
+    const confir = confirm("Desea eliminarlo?");
+    if (confir) {
+      deleteCliente(idCliente);
     }
+  }
 }
